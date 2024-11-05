@@ -45,10 +45,10 @@ pipeline {
                 }
 
                 // Build the Docker image
-                sh 'docker build -t thaibigdata/cicd_for_realtime_data_pipeline:latest .'
+                sh 'docker build -t amornpan/cicd_for_realtime_data_pipeline:latest .'
                 
                 // Push the Docker image to your registry
-                sh 'docker push thaibigdata/cicd_for_realtime_data_pipeline:latest'
+                sh 'docker push amornpan/cicd_for_realtime_data_pipeline:latest'
             }
         }
     }
