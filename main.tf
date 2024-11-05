@@ -7,7 +7,7 @@ provider "google" {
 
 # Cloud Storage bucket
 resource "google_storage_bucket" "bucket" {
- name          = "aekanun_workshop2"
+ name          = "kong_workshop2"
  location      = "us-south1"
  force_destroy = true
  
@@ -21,14 +21,14 @@ resource "google_storage_bucket" "bucket" {
 
 # BigQuery Dataset
 resource "google_bigquery_dataset" "dataset" {
- dataset_id                  = "aekanun_workshop2"
+ dataset_id                  = "kong_workshop2"
  location                   = "US"
  delete_contents_on_destroy = true
 }
 
 # Pub/Sub Topic
 resource "google_pubsub_topic" "transactions" {
- name = "aekanun-transactions"
+ name = "kong-transactions"
  project = "stately-gist-435602-u9"
 
  # ตั้งค่า message retention

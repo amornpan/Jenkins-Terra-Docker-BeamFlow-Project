@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.INFO)
 # Specify your BigQuery project ID and dataset.table name
 table_spec = (
     'stately-gist-435602-u9:'
-    'aekanun_workshop2.aekanun_dfsqltable_sales'
+    'kong_workshop2.kong_dfsqltable_sales'
 )
 
 # Define the schema for your BigQuery table
@@ -24,8 +24,8 @@ pipeline_args = [
     '--project=stately-gist-435602-u9',  # Change to your GCP project ID
     '--runner=DataflowRunner',
     '--region=us-central1',  # Adjust as per your GCP region
-    '--staging_location=gs://aekanun_workshop2/temp/staging/',  # Change to your bucket path
-    '--temp_location=gs://aekanun_workshop2/temp',  # Change to your bucket path
+    '--staging_location=gs://kong_workshop2/temp/staging/',  # Change to your bucket path
+    '--temp_location=gs://kong_workshop2/temp',  # Change to your bucket path
     '--streaming',
     '--setup_file=./setup.py',  # Point to your setup file
 ]
@@ -35,7 +35,7 @@ p = beam.Pipeline(options=pipeline_options)
 
 (p 
  | 'Read from PubSub' >> beam.io.ReadFromPubSub(
-     topic="projects/stately-gist-435602-u9/topics/aekanun-transactions"  # Change to your PubSub topic
+     topic="projects/stately-gist-435602-u9/topics/kong-transactions"  # Change to your PubSub topic
  )
  | 'Cleanse Data' >> beam.Map(cleanse_data)  # Referencing the cleansing function
  | 'Write to BigQuery' >> beam.io.WriteToBigQuery(
