@@ -54,7 +54,7 @@ COPY . /workspace/
 
 # Set environment variable for Google Cloud auth
 ARG GOOGLE_APPLICATION_CREDENTIALS
-ENV GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS:-"/workspace/stately-gist-435602-u9-e7d9d76c1b6d.json"}
+ENV GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS:-"/workspace/stately-gist-435602-u9-e6f0535f800a.json"}
 
 # Command to run when the container starts
 CMD ["sh", "-c", "terraform init && terraform apply -auto-approve && python main_pipeline.py"]
