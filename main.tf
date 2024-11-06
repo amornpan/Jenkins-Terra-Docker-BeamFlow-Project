@@ -1,6 +1,6 @@
 # Provider configuration
 provider "google" {
- credentials = file("stately-gist-435602-u9-ffc45d309261.json")
+ credentials = file("stately-gist-435602-u9-e6f0535f800a.json")
  project     = "stately-gist-435602-u9"
  region      = "us-central1"
 }
@@ -39,7 +39,7 @@ resource "google_pubsub_topic" "transactions" {
 resource "null_resource" "main_pipeline" {
  provisioner "local-exec" {
    command = <<-EOT
-     export GOOGLE_APPLICATION_CREDENTIALS="${path.module}/stately-gist-435602-u9-ffc45d309261.json"
+     export GOOGLE_APPLICATION_CREDENTIALS="${path.module}/stately-gist-435602-u9-e6f0535f800a.json"
      python3 main_pipeline.py
    EOT
  }
@@ -55,10 +55,10 @@ resource "null_resource" "stop_dataflow_job_on_destroy" {
  provisioner "local-exec" {
    when    = destroy
    command = <<-EOT
-     export GOOGLE_APPLICATION_CREDENTIALS="${path.module}/stately-gist-435602-u9-ffc45d309261.json"
+     export GOOGLE_APPLICATION_CREDENTIALS="${path.module}/stately-gist-435602-u9-e6f0535f800a.json"
      
      # Activate service account
-     gcloud auth activate-service-account --key-file=${path.module}/stately-gist-435602-u9-ffc45d309261.json
+     gcloud auth activate-service-account --key-file=${path.module}/stately-gist-435602-u9-e6f0535f800a.json
      
      # Set project
      gcloud config set project stately-gist-435602-u9
